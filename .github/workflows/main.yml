@@ -18,11 +18,13 @@ jobs:
           path: .
   Linting:
     runs-on: ubuntu-latest
-    container: gradle:6-jdk11
     needs: [Build]
     steps:
       - name: Download code
-        uses: actions/download-artifact@v4       
+        uses: actions/download-artifact@v4
+        with:
+          name: code
+          path: .
       - name: Run linting
         uses: super-linter/super-linter/slim@v5
         env:
